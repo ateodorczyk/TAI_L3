@@ -2,35 +2,35 @@
     let questionList = [
         {
             "question" : "Pytanie1",
-            "answerA" : "Odpowiedź1 A",
+            "answerA" : "Poprawna A",
             "answerB" : "Odpowiedź1 B",
             "answerC" : "Odpowiedź1 C",
             "answerD" : "Odpowiedż1 D",
-            "correct" : "Odpowiedź1 A",
+            "correct" : "Poprawna A",
         },
         {
             "question" : "Pytanie2",
             "answerA" : "Odpowiedź2 A",
-            "answerB" : "Odpowiedź2 B",
+            "answerB" : "Poprawna B",
             "answerC" : "Odpowiedź2 C",
             "answerD" : "Odpowiedż2 D",
-            "correct" : "Odpowiedź2 B",
+            "correct" : "Poprawna B",
         },
         {
             "question" : "Pytanie3",
             "answerA" : "Odpowiedź3 A",
             "answerB" : "Odpowiedź3 B",
             "answerC" : "Odpowiedź3 C",
-            "answerD" : "Odpowiedż3 D",
-            "correct" : "Odpowiedź3 C",
+            "answerD" : "Poprawna D",
+            "correct" : "Poprawna D",
         },
         {
             "question" : "Pytanie4",
             "answerA" : "Odpowiedź4 A",
-            "answerB" : "Odpowiedź4 B",
+            "answerB" : "Poprawna B",
             "answerC" : "Odpowiedź4 C",
-            "answerD" : "Odpowiedż4g D",
-            "correct" : "Odpowiedź4 D",
+            "answerD" : "Odpowiedź4 D",
+            "correct" : "Poprawna B",
         },
 
 ];
@@ -40,28 +40,40 @@
  let startButton = document.querySelector('#startButton');
  let quizContainer = document.querySelector('#quiz');
  let answers = document.querySelectorAll('.answer');
+ let resultContainer = document.querySelector('#resultConteiner');
+ let result = document.querySelector('#result');
 
  
  let round = 0;
+ let score = 0;
 
  startButton.addEventListener('click', function () {
      start.style.display = 'none';
      quizContainer.style.display = 'block';
 
      setQuestion();
-     round++;
-
-    // console.log(answers);
+     move();
 
      for(let i = 0; i < answers.length; i++){
          let answer = answers[i];
          answer.addEventListener('click', function () {
-             setQuestion();
-             round++;
+
+             score = checkResult(answer.textContent, questionList[round].correct, score);
+
+             if(questionList[round+1]){
+                 round++;
+                 setQuestion();
+                 move();
+             }else{
+                 quizContainer.style.display = 'none';
+                 resultContainer.style.display = 'block';
+                 result.textContent = score;
+             }
+
          })
      }
  });
- 
+
  function setQuestion() {
 
      document.querySelector('#question').textContent = questionList[round].question;
@@ -71,7 +83,31 @@
      document.querySelector('#d').textContent = questionList[round].answerD;
 
  }
-    
-    
+
+
+ function checkResult(answer, correctAnswer, score) {
+
+     if(answer === correctAnswer) {
+         return score + 1;
+     }
+     return score;
+ }
+
+
+ function move() {
+        var elem = document.getElementById("myBar");
+        var width = 0;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+            } else {
+                width+=25;
+                elem.style.width = width + '%';
+                elem.innerHTML = width * 1 + '%';
+            }
+        }
+    }
+
 
 
