@@ -13,3 +13,7 @@ ul li{
 .center{
     text-align: center;
 }
+
+#quiz{
+    display: none;
+}
