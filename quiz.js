@@ -66,7 +66,15 @@
              if(questionList[round]){
                  setQuestion();
              }else{
-                 showResult();
+                 function test() {
+                     var a = 1;
+                     if (a<=2) {
+                         showResult();
+                         a++
+                     }
+                     test();
+                 }
+
              }
 
          })
@@ -95,6 +103,26 @@
  }
 
  function showResult() {
+
+     if(localStorage.getItem('userScores') === null){
+         let userScore = {
+             "userGames" : 1,
+             "userPointsSum" : score,
+             "average" : score
+         };
+         localStorage.setItem('userScores', JSON.stringify(userScore));
+
+     }  else if(localStorage.getItem('userScores') !== null){
+         let userScore = JSON.parse(localStorage.getItem('userScores'));
+         console.log(userScore);
+         userScore.userGames += 1;
+         userScore.userPointsSum += score;
+         userScore.average = userScore.userPointsSum/userScore.userGames;
+         localStorage.removeItem('userScores');
+         localStorage.setItem('userScores', JSON.stringify(userScore));
+     }
+
+
      quizContainer.style.display = 'none';
      resultContainer.style.display = 'block';
      result.textContent = score;
