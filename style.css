@@ -1,5 +1,5 @@
 body{
-    background-color: #d4d4d6;
+    background-color: #fff;
 }
 
 /*
@@ -10,6 +10,16 @@ ul li{
 }
 */
 
+#container {
+    margin: 20px;
+    width: 200px;
+    height: 100px;
+}
+
+.navbar{
+    background-color: aqua;
+}
+
 .center{
     text-align: center;
 }
@@ -18,12 +28,16 @@ ul li{
     display: none;
 }
 
-#resultConteiner{
+#question{
+    font-weight: bold;
+}
+
+#resultContainer{
     display: none;
 }
 
 .answer:hover{
-    background-color: #c1fff7;
+    background-color: #ededed;
 }
 
 

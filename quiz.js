@@ -36,38 +36,37 @@
 ];
 
  let start = document.querySelector('#start');
-
  let startButton = document.querySelector('#startButton');
  let quizContainer = document.querySelector('#quiz');
  let answers = document.querySelectorAll('.answer');
- let resultContainer = document.querySelector('#resultConteiner');
+ let resultContainer = document.querySelector('#resultContainer');
  let result = document.querySelector('#result');
-
+ let progressBar = document.querySelector('#step');
+ let time = document.querySelector('#timer');
  
  let round = 0;
  let score = 0;
+ let timerWidth = 100;
+ let progressWidth = 0;
 
  startButton.addEventListener('click', function () {
      start.style.display = 'none';
      quizContainer.style.display = 'block';
 
+     countTime();
+
      setQuestion();
-     move();
 
      for(let i = 0; i < answers.length; i++){
          let answer = answers[i];
          answer.addEventListener('click', function () {
 
              score = checkResult(answer.textContent, questionList[round].correct, score);
-
-             if(questionList[round+1]){
-                 round++;
+             round++;
+             if(questionList[round]){
                  setQuestion();
-                 move();
              }else{
-                 quizContainer.style.display = 'none';
-                 resultContainer.style.display = 'block';
-                 result.textContent = score;
+                 showResult();
              }
 
          })
@@ -75,6 +74,8 @@
  });
 
  function setQuestion() {
+
+     nextStep();
 
      document.querySelector('#question').textContent = questionList[round].question;
      document.querySelector('#a').textContent = questionList[round].answerA;
@@ -93,21 +94,39 @@
      return score;
  }
 
+ function showResult() {
+     quizContainer.style.display = 'none';
+     resultContainer.style.display = 'block';
+     result.textContent = score;
+ }
 
- function move() {
-        var elem = document.getElementById("myBar");
-        var width = 0;
-        var id = setInterval(frame, 10);
-        function frame() {
-            if (width >= 100) {
-                clearInterval(id);
-            } else {
-                width+=25;
-                elem.style.width = width + '%';
-                elem.innerHTML = width * 1 + '%';
+ function nextStep() {
+     timerWidth = 100;
+     progressWidth += 100/questionList.length;
+     progressBar.style.width = progressWidth + '%';
+ }
+
+
+    function countTime() {
+        var timer = setInterval(function(){
+            if (timerWidth <= 0) {
+                if (questionList[round + 1]) {
+                    round++;
+                    setQuestion();
+                } else {
+                    clearInterval(timer);
+                    showResult();
+                }
             }
-        }
+
+            if(!(questionList[round])){
+                clearInterval(timer);
+                showResult();
+            }
+
+            timerWidth--;
+            time.style.width = timerWidth + '%';
+
+        }, 200);
     }
-
-
 
