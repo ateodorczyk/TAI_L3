@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pierwsze zajęcia</title>
+    <title>Technologie aplikacji internetowych</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #009faf;">
+<nav class="navbar navbar-dark navbar-expand-lg" >
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html"><img src="images/at-light.png"></a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Strona główna<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Strona główna</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Blog</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="quiz.html">Quiz</a>
                 </li>
                 <li class="nav-item">
@@ -45,39 +45,28 @@
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">QUIZ</h5>
-                <p class="card-text">Quiz na jakiś ciekawy temat.</p>
+                <p class="card-text">Quiz zawierający nieciekawe pytania. Sprawdź się!</p>
                 <a href="#" id="startButton" class="btn btn-warning">Rozpocznij quiz</a>
             </div>
         </div>
     </div>
 
     <div id="quiz" style="margin-top: 20px;">
-        <div class="alert alert-info" id="question">
-            This is a secondary alert—check it out!
-        </div>
-        <div class="answer alert alert-light" id="a">
-            This is a light alert—check it out!
-        </div>
-        <div class="answer alert alert-light" id="b">
-            This is a light alert—check it out!
-        </div>
-        <div class="answer alert alert-light" id="c">
-            This is a light alert—check it out!
-        </div>
-        <div class="answer alert alert-light" id="d">
-            This is a light alert—check it out!
-        </div>
+        <div class="alert alert-info" id="question"></div>
+        <div class="answer alert alert-light" id="a"></div>
+        <div class="answer alert alert-light" id="b"></div>
+        <div class="answer alert alert-light" id="c"></div>
+        <div class="answer alert alert-light" id="d"></div>
     </div>
 
     <div id="resultContainer">
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Twój wynik to:</h5>
-                <p class="card-text" id="result"></p>
+                <div class="card-text" id="result"></div>
             </div>
         </div>
     </div>
-
 
 </div>
 
