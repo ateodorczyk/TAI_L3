@@ -1,36 +1,44 @@
 
     let questionList = [
         {
-            "question" : "Pytanie1",
-            "answerA" : "Poprawna A",
-            "answerB" : "Odpowiedź1 B",
-            "answerC" : "Odpowiedź1 C",
-            "answerD" : "Odpowiedż1 D",
-            "correct" : "Poprawna A",
+            "question" : "Co ile powinniśmy robić sobie przerwe podczas korzystania z komputera?",
+            "answerA" : "30 min",
+            "answerB" : "1 h",
+            "answerC" : "1.5 h",
+            "answerD" : "Najlepiej nigdy",
+            "correct" : "1 h",
         },
         {
-            "question" : "Pytanie2",
-            "answerA" : "Odpowiedź2 A",
-            "answerB" : "Poprawna B",
-            "answerC" : "Odpowiedź2 C",
-            "answerD" : "Odpowiedż2 D",
-            "correct" : "Poprawna B",
+            "question" : "Za język programowania powszechnie nie uznaje się: ",
+            "answerA" : "Java",
+            "answerB" : "Python",
+            "answerC" : "HTML",
+            "answerD" : "C++",
+            "correct" : "HTML",
         },
         {
-            "question" : "Pytanie3",
-            "answerA" : "Odpowiedź3 A",
-            "answerB" : "Odpowiedź3 B",
-            "answerC" : "Odpowiedź3 C",
-            "answerD" : "Poprawna D",
-            "correct" : "Poprawna D",
+            "question" : "Która właściwość CSS posłuży do utworzenia akapitu?",
+            "answerA" : "font-family",
+            "answerB" : "text-align",
+            "answerC" : "text-indent",
+            "answerD" : "font-weight",
+            "correct" : "text-indent",
         },
         {
-            "question" : "Pytanie4",
-            "answerA" : "Odpowiedź4 A",
-            "answerB" : "Poprawna B",
-            "answerC" : "Odpowiedź4 C",
-            "answerD" : "Odpowiedź4 D",
-            "correct" : "Poprawna B",
+            "question" : "Przy tej samej ilość pikseli w zdjęciu, przy zmniejszaniu DPI, rozmiar zdjęcia: ",
+            "answerA" : "Maleje",
+            "answerB" : "Rośnie",
+            "answerC" : "Pozostaje bez zmian",
+            "answerD" : "DP co?",
+            "correct" : "Maleje",
+        },
+        {
+            "question" : "Protokołem sieci WWW jest: ",
+            "answerA" : "TCP/IP",
+            "answerB" : "DHCP",
+            "answerC" : "HWDP",
+            "answerD" : "HTTP",
+            "correct" : "HTTP",
         },
 
 ];
@@ -125,7 +133,10 @@
 
      quizContainer.style.display = 'none';
      resultContainer.style.display = 'block';
-     result.textContent = score;
+     result.innerHTML = '<h2 style="font-weight: bold">' + score + '/' + questionList.length + '</h2>' +
+                        '<h5> poprawnych odpowiedzi <br><br> </h5>' +
+                        '<h6> Liczba podejść: ' +  JSON.parse(localStorage.getItem('userScores')).userGames + '<br>' +
+                        ' Średnia punktów: ' +  JSON.parse(localStorage.getItem('userScores')).average + '</h6>';
  }
 
  function nextStep() {
